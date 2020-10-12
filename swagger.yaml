@@ -1,0 +1,64 @@
+openapi: 3.0.1
+
+info:
+  title: ainize-Instafilter-swagger
+  description: |
+      Instafilter is implemented on original repo [instafilter](https://github.com/thoppe/instafilter).  
+      Instafilter modifiy images using Instagram-like filters based on pytorch.  
+      You can POST image which is jpg or png type.  
+      Response will be image with png type.  
+      [Original Repo](https://github.com/thoppe/instafilter) / [Github Repo](https://github.com/gmlee329/instafilter) / [Demo](https://master-instafilter-gmlee329.endpoint.ainize.ai)
+      
+      How to use:
+      * Upload an Image you want to apply insta-like filter
+      * Execute and wait little time
+  contact:
+    name: Ainizer - gyumin Lee
+  version: "2.0"
+  license:
+    name: Travis Hoppe
+    url: https://twitter.com/metasemantic?lang=en
+
+servers:
+  - url: https://master-instafilter-gmlee329.endpoint.ainize.ai
+
+paths:
+  /filter:
+    post:
+      requestBody:
+        required: true
+        description: | 
+          Upload an Image you want to apply insta-like filter.  
+          <a id="sample" href="https://raw.githubusercontent.com/gmlee329/instafilter/master/static/sample1.jpg">here is sample image</a>
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                mode:
+                  type: string
+                  enum: ['1977', 'Aden', 'Amaro', 'Ashby', 'Brannan', 'Brooklyn', 'Charmes', 'Clarendon', 'Crema', 'Dogpatch', 'Earlybird', 'Gingham', 'Ginza', 'Hefe', 'Helena', 'Hudson', 'Inkwell', 'Juno', 'Kelvin', 'Lark', 'Lo-Fi', 'Ludwig', 'Mayfair', 'Melvin', 'Moon', 'Nashville', 'Perpetua', 'Reyes', 'Rise', 'Sierra', 'Skyline', 'Slumber', 'Stinson', 'Sutro', 'Toaster', 'Valencia', 'Vesper', 'Walden', 'Willow', 'X-ProII']
+                image:
+                  type: string
+                  format: binary
+            encoding:
+              files:
+                contentType: image/*
+
+      responses:
+        '200':
+          description: success
+          content:
+            images/*:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request
+        
+        '429':
+          description: Busy to server, please retry again.
+
+        '500':
+          description: Server side error
+          
