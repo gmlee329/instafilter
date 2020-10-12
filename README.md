@@ -1,10 +1,11 @@
 # Instafilter
 This repo is implemented on original repo : [instafilter](https://github.com/thoppe/instafilter).
 
-I implemented flask api server to run the model and get result via http protocol.
+I implemented flask api server to run the model and get result via http protocol.  
 And also I made web frontend page to test demo.
 # Example
 Instafilter modifiy images using Instagram-like filters based on pytorch
+
 ![example](static/example_filter.png)
 ## How to run
 **Run right now!**  
