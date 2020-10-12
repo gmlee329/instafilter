@@ -130,7 +130,7 @@ def run(mode, image_file):
 
 # routing
 @app.route("/filter", methods=['POST'])
-def apply_filter():
+def filter():
     try:
         # only get one request at a time
         if requests_queue.qsize() > BATCH_SIZE:
