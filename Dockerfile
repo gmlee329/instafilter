@@ -17,3 +17,5 @@ RUN pip install image
 RUN pip install flask && pip install waitress
 
 WORKDIR /instafilter/
+COPY . .
+ENTRYPOINT [ "python", "server.py" ]
