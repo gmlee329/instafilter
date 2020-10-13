@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-cudnn8-devel-ubuntu18.04
+FROM nvidia/cuda:10.0-cudnn7-devel
 ENV PATH /usr/local/bin:$PATH
 ENV LANG C.UTF-8
 RUN apt-get update && \
