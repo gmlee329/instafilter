@@ -18,4 +18,6 @@ RUN pip install flask && pip install waitress
 
 WORKDIR /instafilter/
 COPY . .
+
+EXPOSE 80
 ENTRYPOINT [ "python", "server.py" ]
